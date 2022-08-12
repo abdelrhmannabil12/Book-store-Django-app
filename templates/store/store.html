@@ -8,10 +8,10 @@
          <div class="box-element product">
                 <h6><b>{{book.title}}</b></h6>
                 <hr>
-                <button class="btn btn-success">Buy Now</button>
-                <a href="#" class="btn btn-outline-info">View</a>
+                <button data-book="{{book.id}}" data-action="add" class="btn btn-success update-cart">Buy Now</button>
+                <p >{{book.describtion}}</p>
          <h4 style="display: inline-block;
-        float: right;">{{book.price}}$</h4>
+        ">{{book.price}}$</h4>
             </div> 
     </div>
     {% endfor %}
