@@ -11,8 +11,8 @@
                 <br>
                 <table class="table">
                     <tr>
-                        <th><h5>Items: <b>10</b> </h5></th>
-                        <th><h5>Total: <b>43</b> </h5></th>
+                        <th><h5>Items: <b>{{order.itemsTotal}}</b> </h5></th>
+                        <th><h5>Total: <b>{{order.orderTotal}}</b> </h5></th>
                         
                     </tr>
                 </table>
@@ -25,17 +25,18 @@
                     <div style="flex: 1;"> <b> Price</b></div>
                     <div style="flex: 1;"> <b> quantity</b></div>
                     <div style="flex: 1;"> <b> Total</b></div>
-                    
                 </div>
+                {% for item in items %}   
+            
                 <div class="cart-row">
-                    <div style="flex: 2;">here is the img</div>
-                    <div style="flex: 2;">smile u died</div>
-                    <div style="flex: 1;">20</div>
-                    <div style="flex: 1;">3</div>
-                    <div style="flex: 1;">60</div>
+                    <div style="flex: 2;"><img class="thumbnail" src="{{item.book.imageURL}}" alt=""></div>
+                    <div style="flex: 2;padding: 10px;">{{item.book.title}}</div>
+                    <div style="flex: 1;">{{item.book.price}}$</div>
+                    <div style="flex: 1;">{{item.quantity}}</div>
+                    <div style="flex: 1;">{{item.getTotal}}$</div>
                     
                 </div>
-
+            {% endfor %}
 
             </div>
         </div>
