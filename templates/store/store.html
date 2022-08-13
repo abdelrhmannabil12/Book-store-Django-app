@@ -1,18 +1,22 @@
 {% extends 'store/base.html' %}
 {% load static %}
-    {% block content %}
+{% block content %}
 <div class="row">
     {% for book in books %}
     <div class="col-lg-4">
         <img class="thumbnail" src="{{book.imageURL}}" alt="">
-         <div class="box-element product">
-                <h6><b>{{book.title}}</b></h6>
-                <hr>
-                <button data-book="{{book.id}}" data-action="add" class="btn btn-success update-cart">Buy Now</button>
-                <p >{{book.describtion}}</p>
-         <h4 style="display: inline-block;
-        ">{{book.price}}$</h4>
-            </div> 
+        <div class="box-element product">
+            <h6><b>{{book.title}}</b></h6>
+            <hr>
+            {% if user.is_authenticated %}
+            <button data-book="{{book.id}}" data-action="add" class="btn btn-success update-cart">Buy Now</button>
+            {% else %}
+            <button disabled="True" class="btn btn-info ">Buy Now</button>
+            {% endif%}
+            <p>{{book.describtion}}</p>
+            <h4 style="display: inline-block;
+        ">{{book.price}} EGP</h4>
+        </div>
     </div>
     {% endfor %}
 </div>
