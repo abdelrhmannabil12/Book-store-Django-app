@@ -6,11 +6,16 @@ from django.http import JsonResponse
 import json
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UserRegisterForm
-
+from django.core.paginator import Paginator
 
 def store(request):
     books = Book.objects.all()
-    return render(request, 'store/store.html', {'books': books})
+
+    pagination=Paginator(books,3)
+    page=request.GET.get('page')
+    booksperpage=pagination.get_page(page)
+    return render(request, 'store/store.html', {'books': books,
+    'booksperpage':booksperpage})
 
 
 def profile(request):

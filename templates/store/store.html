@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <div class="row">
-    {% for book in books %}
+    {% for book in booksperpage %}
     <div class="col-lg-4">
         <img class="thumbnail" src="{{book.imageURL}}" alt="">
         <div class="box-element product">
@@ -19,6 +19,15 @@
         </div>
     </div>
     {% endfor %}
+    {% if booksperpage.has_previous %}
+        <a href="?page=1">&laquo; First</a>
+        <a href="?page={{booksperpage.pervious_page_number}}}">Previous</a>
+{% endif %}
+Page {{booksperpage.number}} of {{booksperpage.paginator.num_pages}}
+{% if booksperpage.has_next %}
+<a href="?page={{booksperpage.next_page_number}}">next</a>
+<a href="?page={{booksperpage.paginator.num_pages}}">Last</a>
+{% endif %}
 </div>
 </div>
 {% endblock content %}
