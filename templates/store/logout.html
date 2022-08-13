@@ -1,5 +1,7 @@
 {% extends 'store/base.html' %}
 {% load static %}
     {% block content %}
-<h1>log out</h1>
+    <h1>you have been Logged out</h1>
+    <h5><a href="{% url 'login' %}">Log in again</a></h5>
+    
 {% endblock content %}
