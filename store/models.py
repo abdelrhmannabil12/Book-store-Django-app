@@ -53,7 +53,9 @@ class Order(models.Model):
         orderitems = self.orderitem_set.all()
         total = sum([item.getTotal for item in orderitems])
         return total
-
+    @property
+    def namee(self):
+        return self.customer.name
     @property
     def itemsTotal(self):
         orderitems = self.orderitem_set.all()
