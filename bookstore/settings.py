@@ -139,7 +139,7 @@ LOGIN_REDIRECT_URL='store'
 JAZZMIN_SETTINGS = {
      "site_title": "Book Store",
     "site_header": "Book Store Admin",
-    "site_brand": "Book Store Admin"
+    "site_brand": "Book Store Admin",
 }
 
 JAZZMIN_UI_TWEAKS = {
@@ -148,7 +148,7 @@ JAZZMIN_UI_TWEAKS = {
     "body_small_text": False,
     "brand_small_text": False,
     "brand_colour": False,
-    "accent": "accent-indigo",
+    "accent": "accent-info",
     "navbar": "navbar-navy navbar-dark",
     "no_navbar_border": False,
     "navbar_fixed": False,

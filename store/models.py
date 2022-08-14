@@ -1,4 +1,3 @@
-import email
 from operator import mod
 from pydoc import describe
 from pyexpat import model
@@ -45,8 +44,7 @@ class Order(models.Model):
         Customer, on_delete=models.SET_NULL, null=True, blank=True)
     date_ordered = models.DateTimeField(auto_now_add=True)
     compelte = models.BooleanField(default=False, null=True, blank=True)
-    transction_id = models.CharField(max_length=100, null=True)
-
+ 
     def __str__(self):
         return str(self.id)
 
