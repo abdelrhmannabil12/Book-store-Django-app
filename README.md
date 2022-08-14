@@ -8,9 +8,7 @@ open command prompt
 git clone https://github.com/abdelrhmannabil12/book-store.git
 cd book-store
 code . (if you have visual studio code)
-pip install -U django-jazzmin
-pip install django_crispy_forms
-pip install pillow
+pip install -r requirements.txt
 py manage.py makemigrations
 py manage.py migrate
 py manage.py runserver
