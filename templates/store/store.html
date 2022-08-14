@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row">
     {% for book in booksperpage %}
-    <div class="col-lg-4">
+    <div class="col-lg-4" style="padding-bottom: 5%;">
         <img class="thumbnail" src="{{book.imageURL}}" alt="">
         <div class="box-element product">
             <h6><b>{{book.title}}</b></h6>
@@ -11,7 +11,7 @@
             {% if user.is_authenticated %}
             <button data-book="{{book.id}}" data-action="add" class="btn btn-success update-cart">Buy Now</button>
             {% else %}
-            <button disabled="True" class="btn btn-info ">Buy Now</button>
+            <a class="btn btn-warning " href="{% url 'login' %}">Buy Now</a>
             {% endif%}
             <p>{{book.describtion}}</p>
             <h4 style="display: inline-block;
@@ -19,15 +19,33 @@
         </div>
     </div>
     {% endfor %}
-    {% if booksperpage.has_previous %}
-        <a href="?page=1">&laquo; First</a>
-        <a href="?page={{booksperpage.pervious_page_number}}}">Previous</a>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+
+            {% if booksperpage.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page=1">&laquo; First</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{booksperpage.previous_page_number}}">Previous</a>
+            </li>
+            {% elif not booksperpage.has_previous %}
+            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+            {% endif %}
+
+            {% for page in booksperpage.paginator.page_range %}
+            <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+            {% endfor %}
+
+            {% if booksperpage.has_next %}
+            <li class="page-item"> <a href="?page={{booksperpage.next_page_number}}" class="page-link">next</a></li>
+            <li class="page-item"></li><a href="?page={{booksperpage.paginator.num_pages}}"
+                class="page-link">Last&raquo;</a>
+</div>
+</li>
+{% elif not booksperpage.has_next %}
+<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
 {% endif %}
-Page {{booksperpage.number}} of {{booksperpage.paginator.num_pages}}
-{% if booksperpage.has_next %}
-<a href="?page={{booksperpage.next_page_number}}">next</a>
-<a href="?page={{booksperpage.paginator.num_pages}}">Last</a>
-{% endif %}
+</ul>
+</nav>
+
 </div>
 </div>
 {% endblock content %}

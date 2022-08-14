@@ -1,49 +1,57 @@
 {% extends 'store/base.html' %}
 {% load static %}
-    {% block content %}
+{% block content %}
 
-    <h3>Hi {{user.username}} welcome to your cart</h3>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="box-element">
-                <a href="{% url 'store' %}">continue shoping</a>
-                <br>
-                <br>
-                <table class="table">
-                    <tr>
-                        <th><h5>Items: <b>{{order.itemsTotal}}</b> </h5></th>
-                        <th><h5>Total: <b>{{order.orderTotal}}</b> </h5></th>
-                        
-                    </tr>
-                </table>
-            </div>
+<h3>Hi {{user.username}} welcome to your cart</h3>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box-element">
+            <a href="{% url 'store' %}" class="btn btn-outline-dark">&laquo; continue shoping</a>
             <br>
-            <div class="box-element">
-                <div class="cart-row">
-                    <div style="flex: 2;"></div>
-                    <div style="flex: 2;"> <b> Book</b></div>
-                    <div style="flex: 1;"> <b> Price</b></div>
-                    <div style="flex: 1;"> <b> quantity</b></div>
-                    <div style="flex: 1;"> <b> Total</b></div>
-                </div>
-                {% for item in items %}   
-            
-                <div class="cart-row">
-                    <div style="flex: 2;"><img class="thumbnail" src="{{item.book.imageURL}}" alt=""></div>
-                    <div style="flex: 2;padding: 10px;">{{item.book.title}}</div>
-                    <div style="flex: 1;">{{item.book.price}} EGP</div>
-                    <div style="flex: 1;"><p class="quantity">{{item.quantity}}</p>
+            <br>
+            <table class="table">
+                <tr>
+                    <th>
+                        <h5>Items: <b>{{order.itemsTotal}}</b> </h5>
+                    </th>
+                    <th>
+                        <h5>Total: <b>{{order.orderTotal}}</b> </h5>
+                    </th>
+
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div class="box-element">
+            <div class="cart-row">
+                <div style="flex: 2;"></div>
+                <div style="flex: 2;"> <b> Book</b></div>
+                <div style="flex: 1;"> <b> Price</b></div>
+                <div style="flex: 1;"> <b> Date </b></div>
+                <div style="flex: 1;"> <b> quantity</b></div>
+                <div style="flex: 1;"> <b> Total</b></div>
+            </div>
+            {% for item in items %}
+
+            <div class="cart-row">
+                <div style="flex: 2;"><img class="thumbnail" src="{{item.book.imageURL}}" alt=""></div>
+                <div style="flex: 2;padding: 10px;">{{item.book.title}}</div>
+                <div style="flex: 1;">{{item.book.price}} EGP</div>
+                <div style="flex: 1;">{{item.date_added}} </div>
+                <div style="flex: 1;">
+                    <p class="quantity">{{item.quantity}}</p>
                     <div class="quantity">
-                        <p data-book="{{item.book.id}}" data-action="add"    class="chg-quantity update-cart"> &#8593;</p>
-                        <p data-book="{{item.book.id}}" data-action="remove" class="chg-quantity update-cart">&#8595;</p>
+                        <p data-book="{{item.book.id}}" data-action="add" class="chg-quantity update-cart"> &#8593;</p>
+                        <p data-book="{{item.book.id}}" data-action="remove" class="chg-quantity update-cart">&#8595;
+                        </p>
                     </div>
-                    </div>
-                    <div style="flex: 1;">{{item.getTotal}}$</div>
-                    
                 </div>
+                <div style="flex: 1;">{{item.getTotal}}$</div>
+
+            </div>
             {% endfor %}
 
-            </div>
         </div>
     </div>
+</div>
 {% endblock content %}
