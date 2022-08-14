@@ -9,7 +9,5 @@ git clone https://github.com/abdelrhmannabil12/book-store.git
 cd book-store
 code . (if you have visual studio code)
 pip install -r requirements.txt
-py manage.py makemigrations
-py manage.py migrate
 py manage.py runserver
 ```
