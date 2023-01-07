@@ -5,7 +5,7 @@
 To run this project, install it locally :
 ```
 open command prompt
-git clone https://github.com/abdelrhmannabil12/book-store.git
+git clone https://github.com/abdelrhmannabil12/Book-store-Django-app.git
 cd book-store
 code . (if you have visual studio code)
 pip install -r requirements.txt
